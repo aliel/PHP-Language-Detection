@@ -1,6 +1,6 @@
 {
 
-	"name": "koenokatachi/pld",
+	"name": "koenokatachi/php-language-detection",
 	"autoload":{
 		"psr-0":{
 			"para": "src/"
