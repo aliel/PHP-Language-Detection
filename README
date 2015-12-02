@@ -1,9 +1,13 @@
 PHP Language Detection
 ======================
 A pure PHP implementation of language detection (of arbitrary text) based on 
-n-gram profiles. It contains a pre-trained model that can recognize: dutch (nl), 
-english (en), german (de), french (fr), spanish (es), indonesian (id), japanese 
-(jp) and portugese (pt) (the "twitter languages").
+n-gram profiles.
+
+Pre-trained model features:
+arabic bulgarian chinese danish dutch english finnish french german greek indonesian
+italian japanese korean norwegian polish portugese romanian russian spanish swedish
+ukrainian turkish
+
 
 How does it work?
 =================
@@ -30,16 +34,3 @@ Finally, the system computes a distance measure between the document's profile
 and each of the category profiles. The system selects the category whose profile 
 has the smallest distance to the document's profile. The profiles involved are 
 quite small, typically 10K bytes for a category
-
-Example
-=======
-<?php
-   $classifier = new NGramProfiles('etc/classifiers/ngrams.dat');
-   if( !$classifier->exists() ) {
-      $classifier->train('en_US', 'etc/data/english.raw');
-      $classifier->train('nl_NL', 'etc/data/dutch.raw');
-      $classifier->save();
-   } else {
-      $classifier->load();
-   }
-   $classifier->predict('This is an english sentence.'); // 'en_US'
